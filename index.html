@@ -2,7 +2,10 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Pongsakorn - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -52,6 +55,9 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(20px);
+            /* Touch-friendly */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .contact-card::before {
@@ -225,6 +231,11 @@
             text-decoration: none;
             color: white;
             font-size: 2rem;
+            /* Touch-friendly */
+            min-width: 48px;
+            min-height: 48px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
         
         .social-icon::before {
@@ -439,6 +450,10 @@
             justify-content: center;
             gap: 10px;
             animation: gradientShift 3s ease infinite;
+            /* Touch-friendly */
+            min-height: 48px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .submit-btn:hover {
@@ -465,7 +480,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Responsive Design */
+        /* Enhanced Mobile Responsive Design */
         @media (max-width: 1024px) {
             .contact-content {
                 grid-template-columns: 1fr;
@@ -479,7 +494,7 @@
 
         @media (max-width: 768px) {
             .contact-section {
-                padding: 80px 0;
+                padding: 60px 0;
             }
             
             .contact-container {
@@ -487,32 +502,102 @@
             }
             
             .contact-card {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
             
             .contact-form-wrapper {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             
             .form-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .social-media-icons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .social-icon {
+                padding: 12px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-section {
+                padding: 40px 0;
+            }
+            
+            .contact-container {
+                padding: 0 10px;
+            }
+            
+            .contact-card {
+                padding: 20px 15px;
+            }
+            
+            .contact-form-wrapper {
+                padding: 20px 10px;
+            }
+            
+            .form-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .form-header p {
+                font-size: 0.9rem;
+            }
+            
+            .input-wrapper input,
+            .input-wrapper textarea {
+                padding: 15px 15px 15px 45px;
+                font-size: 0.9rem;
+            }
+            
+            .input-wrapper label {
+                left: 45px;
+                font-size: 0.8rem;
+            }
+            
+            .input-icon {
+                left: 15px;
+                font-size: 1rem;
+            }
+            
+            .submit-btn {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+            
+            .social-media-icons {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .social-icon {
+                padding: 10px;
+                font-size: 1.2rem;
             }
         }
 
-        /* Responsive Design */
+        /* Enhanced Navigation Responsive Design */
         @media (max-width: 1024px) {
             .navbar {
                 padding: 0 20px;
             }
             
             .nav-container {
-                flex-direction: column;
-                gap: 20px;
+                flex-wrap: wrap;
+                gap: 15px;
             }
             
-            .nav-links {
-                flex-direction: column;
-                gap: 15px;
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .logo {
+                margin-left: 0;
             }
         }
 
@@ -522,19 +607,83 @@
             }
             
             .navbar {
-                padding: 0 15px;
+                padding: 0.5rem 15px;
+            }
+            
+            .nav-container {
+                justify-content: space-between;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 1rem;
+            }
+            
+            .nav-menu.active {
+                left: 0;
             }
             
             .logo {
                 font-size: 1.5rem;
+                margin-left: 0;
             }
             
-            .nav-links a {
-                padding: 25px;
+            .nav-menu a {
+                padding: 12px 20px;
+                font-size: 1rem;
+                width: 80%;
+                text-align: center;
+                border-radius: 10px;
+                margin: 5px 0;
+            }
+            
+            .hero {
+                padding: 0 15px;
+                text-align: center;
             }
             
             .contact-info {
-                gap: 20px;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5rem 10px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .nav-menu {
+                gap: 0.3rem;
+            }
+            
+            .nav-menu a {
+                padding: 6px 8px;
+                font-size: 0.8rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .hero {
+                padding: 0 10px;
             }
         }
 
@@ -551,6 +700,76 @@
                 linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
             background-attachment: fixed;
             animation: backgroundShift 25s ease-in-out infinite alternate, luxuryGlow 15s ease-in-out infinite;
+            /* Mobile optimizations */
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Mobile-specific optimizations */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Better performance on mobile */
+            }
+            
+            /* Improve text readability on mobile */
+            h1, h2, h3, h4, h5, h6 {
+                line-height: 1.3;
+                word-wrap: break-word;
+            }
+            
+            p {
+                line-height: 1.6;
+                word-wrap: break-word;
+            }
+            
+            /* Optimize images for mobile */
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+            
+            /* Prevent horizontal scrolling */
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* Improve button spacing on mobile */
+            button, .btn, .cta-button {
+                margin: 10px 5px;
+                min-height: 44px;
+                padding: 12px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+                line-height: 1.3;
+            }
+            
+            p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            /* Reduce padding on very small screens */
+            .container {
+                padding: 0 10px;
+            }
         }
 
         @keyframes luxuryGlow {
@@ -593,6 +812,38 @@
             align-items: center;
             padding: 0 2rem;
         }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
 
         .logo {
             font-size: 1.8rem;
@@ -627,6 +878,12 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             backdrop-filter: blur(10px);
+            /* Touch-friendly */
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .nav-menu a:hover {
@@ -2747,16 +3004,16 @@
                 <div class="certificate-item coursera">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/Coursera CSA4P80D9E32 (1)-1.png" alt="Google Cybersecurity Certificate">
+                            <img src="Certificate/Coursera CSA4P80D9E32 (1)-1.png" alt="Build a Chatbot Using ChatGPT">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Google Cybersecurity Certificate</h3>
+                            <h3>Build a Chatbot Using ChatGPT</h3>
                             <p class="certificate-issuer">Coursera - Google</p>
                             <div class="certificate-tags">
-                                <span class="tag">Cybersecurity</span>
-                                <span class="tag">Network Security</span>
-                                <span class="tag">Risk Management</span>
+                                <span class="tag">ChatGPT</span>
+                                <span class="tag">Chatbot</span>
+                                <span class="tag">AI</span>
                             </div>
                         </div>
                     </div>
@@ -2765,16 +3022,16 @@
                 <div class="certificate-item coursera">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/Coursera GML2R6NDN71I (1)-1.png" alt="Google Machine Learning Certificate">
+                            <img src="Certificate/Coursera GML2R6NDN71I (1)-1.png" alt="Generative AI For Data">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Google Machine Learning Certificate</h3>
+                            <h3>Generative AI For Data</h3>
                             <p class="certificate-issuer">Coursera - Google</p>
                             <div class="certificate-tags">
-                                <span class="tag">Machine Learning</span>
-                                <span class="tag">TensorFlow</span>
+                                <span class="tag">Generative AI</span>
                                 <span class="tag">Data Science</span>
+                                <span class="tag">Machine Learning</span>
                             </div>
                         </div>
                     </div>
@@ -2784,15 +3041,33 @@
                 <div class="certificate-item university">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/Certificate-ESD1004s-TH-1.png" alt="Enterprise System Development">
+                            <img src="Certificate/Certificate-ESD1004s-TH-1.png" alt="Innovation Mindset">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Enterprise System Development</h3>
-                            <p class="certificate-issuer">Bangkok University</p>
+                            <h3>Innovation Mindset</h3>
+                            <p class="certificate-issuer">Set E-Learning</p>
                             <div class="certificate-tags">
-                                <span class="tag">System Design</span>
-                                <span class="tag">Enterprise</span>
+                                <span class="tag">Innovation</span>
+                                <span class="tag">Mindset</span>
+                                <span class="tag">Creativity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-item university">
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="Certificate/Certificate-MKD1002s-TH-1.png" alt="UX Development">
+
+                        </div>
+                        <div class="certificate-info">
+                            <h3>UX Development</h3>
+                            <p class="certificate-issuer">Set E-Learning</p>
+                            <div class="certificate-tags">
+                                <span class="tag">UX Design</span>
+                                <span class="tag">User Experience</span>
                                 <span class="tag">Development</span>
                             </div>
                         </div>
@@ -2802,16 +3077,16 @@
                 <div class="certificate-item university">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/Certificate-MKD1002s-TH-1.png" alt="Marketing Digital">
+                            <img src="Certificate/Certificate-SED1001s-TH-1.png" alt="Technology For Business">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Digital Marketing</h3>
-                            <p class="certificate-issuer">Bangkok University</p>
+                            <h3>Technology For Business</h3>
+                            <p class="certificate-issuer">Set E-Learning</p>
                             <div class="certificate-tags">
-                                <span class="tag">Digital Marketing</span>
-                                <span class="tag">SEO</span>
-                                <span class="tag">Social Media</span>
+                                <span class="tag">Technology</span>
+                                <span class="tag">Business</span>
+                                <span class="tag">Digital Transformation</span>
                             </div>
                         </div>
                     </div>
@@ -2820,34 +3095,16 @@
                 <div class="certificate-item university">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/Certificate-SED1001s-TH-1.png" alt="Software Engineering Design">
+                            <img src="Certificate/Certificate-SED1003s-TH-1.png" alt="Critical Thinking For Business">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Software Engineering Design</h3>
-                            <p class="certificate-issuer">Bangkok University</p>
+                            <h3>Critical Thinking For Business</h3>
+                            <p class="certificate-issuer">Set E-Learning</p>
                             <div class="certificate-tags">
-                                <span class="tag">Software Design</span>
-                                <span class="tag">Architecture</span>
-                                <span class="tag">Engineering</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certificate-item university">
-                    <div class="certificate-card">
-                        <div class="certificate-image">
-                            <img src="Certificate/Certificate-SED1003s-TH-1.png" alt="Software Engineering Project">
-
-                        </div>
-                        <div class="certificate-info">
-                            <h3>Software Engineering Project</h3>
-                            <p class="certificate-issuer">Bangkok University</p>
-                            <div class="certificate-tags">
-                                <span class="tag">Project Management</span>
-                                <span class="tag">Software Development</span>
-                                <span class="tag">Teamwork</span>
+                                <span class="tag">Critical Thinking</span>
+                                <span class="tag">Business Analysis</span>
+                                <span class="tag">Problem Solving</span>
                             </div>
                         </div>
                     </div>
@@ -2857,16 +3114,16 @@
                 <div class="certificate-item professional">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/ERP-1.png" alt="ERP Certificate">
+                            <img src="Certificate/ERP-1.png" alt="Cloud Application ERP">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Enterprise Resource Planning</h3>
-                            <p class="certificate-issuer">Professional Training</p>
+                            <h3>Cloud Application ERP</h3>
+                            <p class="certificate-issuer">Oracle University</p>
                             <div class="certificate-tags">
-                                <span class="tag">ERP</span>
-                                <span class="tag">Business Process</span>
-                                <span class="tag">SAP</span>
+                                <span class="tag">Cloud ERP</span>
+                                <span class="tag">Oracle</span>
+                                <span class="tag">Enterprise Resource Planning</span>
                             </div>
                         </div>
                     </div>
@@ -2875,16 +3132,16 @@
                 <div class="certificate-item professional">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/HCM-1.png" alt="HCM Certificate">
+                            <img src="Certificate/HCM-1.png" alt="Cloud Application HCM">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Human Capital Management</h3>
-                            <p class="certificate-issuer">Professional Training</p>
+                            <h3>Cloud Application HCM</h3>
+                            <p class="certificate-issuer">Oracle University</p>
                             <div class="certificate-tags">
-                                <span class="tag">HCM</span>
-                                <span class="tag">HR Management</span>
-                                <span class="tag">Workforce</span>
+                                <span class="tag">Cloud HCM</span>
+                                <span class="tag">Oracle</span>
+                                <span class="tag">Human Capital Management</span>
                             </div>
                         </div>
                     </div>
@@ -2893,16 +3150,16 @@
                 <div class="certificate-item professional">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/SCM-1.png" alt="SCM Certificate">
+                            <img src="Certificate/SCM-1.png" alt="Cloud Application SCM">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Supply Chain Management</h3>
-                            <p class="certificate-issuer">Professional Training</p>
+                            <h3>Cloud Application SCM</h3>
+                            <p class="certificate-issuer">Oracle University</p>
                             <div class="certificate-tags">
-                                <span class="tag">SCM</span>
-                                <span class="tag">Logistics</span>
-                                <span class="tag">Operations</span>
+                                <span class="tag">Cloud SCM</span>
+                                <span class="tag">Oracle</span>
+                                <span class="tag">Supply Chain Management</span>
                             </div>
                         </div>
                     </div>
@@ -2911,16 +3168,16 @@
                 <div class="certificate-item professional">
                     <div class="certificate-card">
                         <div class="certificate-image">
-                            <img src="Certificate/CX-1.png" alt="Customer Experience Certificate">
+                            <img src="Certificate/CX-1.png" alt="Cloud Application CX">
 
                         </div>
                         <div class="certificate-info">
-                            <h3>Customer Experience Management</h3>
-                            <p class="certificate-issuer">Professional Training</p>
+                            <h3>Cloud Application CX</h3>
+                            <p class="certificate-issuer">Oracle University</p>
                             <div class="certificate-tags">
-                                <span class="tag">CX</span>
-                                <span class="tag">Customer Service</span>
-                                <span class="tag">UX Design</span>
+                                <span class="tag">Cloud CX</span>
+                                <span class="tag">Oracle</span>
+                                <span class="tag">Customer Experience</span>
                             </div>
                         </div>
                     </div>
@@ -3068,6 +3325,35 @@
                     });
                 }
             });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking on nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
 
         // Navbar background change on scroll - keep transparent
